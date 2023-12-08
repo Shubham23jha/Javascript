@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubham</title>
+</head>
+<body>
+    <h1>Hello, Shubham</h1>
+    <button id="stop"> Click</button>
+<script>
+    // setTimeout(function() {
+    //     console.log("hello!");
+    // },1000)
+const changeValue =function(){
+    document.querySelector("h1").innerText ="I am learning web Development!";
+}
+
+const stopChanging = setTimeout(changeValue,4000)
+document.querySelector("#stop").addEventListener("click",function(){
+    clearInterval(stopChanging);
+    console.log("Stopped");
+});
+
+
+
+</script>
+</body>
+</html>
