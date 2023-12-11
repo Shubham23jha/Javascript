@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure aur chai</title>
+</head>
+<body style="background-color: #313131;">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+
+    <script>
+    // function init() {
+    //     let name = "Mozilla"; 
+    //     function displayName() {
+    //         console.log(name); 
+    //     }
+    //     displayName();
+    // }
+    // init();
+
+    // function outer(){
+    //     let username = "hitesh"
+    //     console.log("OUTER", secret);
+    //     function inner(){
+    //         let secret = "my123"
+    //         console.log("inner", username);
+    //     }
+    //     function innerTwo(){
+    //         console.log("innerTwo", username);
+    //         console.log(secret);
+    //     }
+    //     inner()
+    //     innerTwo()
+
+    // }
+    // outer()
+    // console.log("TOO OUTER", username);
+
+
+    // function makeFunc() {
+    //     const name = "Mozilla";
+    //     function displayName() {
+    //         console.log(name);
+    //     }
+    //     return displayName;
+    // }
+
+    // const myFunc = makeFunc();
+    // myFunc();
+
+    </script>
+    <script>
+        // document.getElementById("orange").onclick = function(){
+        //     document.body.style.backgroundColor = `orange`
+        // }
+        // document.getElementById("green").onclick = function(){
+        //     document.body.style.backgroundColor = `green`
+        // }
+
+        function clickHandler(color){
+            // document.body.style.backgroundColor = `${color}`
+
+            return function(){
+                document.body.style.backgroundColor = `${color}`
+            }
+        }
+
+        document.getElementById('orange').onclick = clickHandler("orange")
+        document.getElementById('green').onclick = clickHandler("green")
+
+    </script>
+</html>
+<!-- 
+ diff between closure and lexical scope 
+
+ "Closure" and "lexical scope" are related concepts in JavaScript, and they are often used together. Let's clarify each term and then discuss the relationship between them.
+
+1. **Lexical Scope:**
+   Lexical scope, also known as static scope, refers to how variable names are resolved in a program during the compilation phase. The scope of a variable is determined by its location in the source code, and it is defined by the placement of the variable declaration in the code.
+
+   In JavaScript, scope is created by functions and blocks (with the introduction of block-scoped declarations using `let` and `const` in ECMAScript 6). A variable declared inside a function or block is accessible only within that function or block and any nested functions or blocks.
+
+   ```javascript
+   function outer() {
+     let x = 10;
+
+     function inner() {
+       console.log(x); // Accessing x from the outer scope
+     }
+
+     inner();
+   }
+
+   outer(); // Output: 10
+   ```
+
+   In this example, `inner` has access to the variable `x` declared in the lexical scope of `outer`.
+
+2. **Closure:**
+   A closure is a function bundled together with references to its outer scope. In JavaScript, functions can be defined inside other functions, forming closures. Closures have access to the variables of their outer (enclosing) scope even after the outer function has finished execution.
+
+   ```javascript
+   function outer() {
+     let x = 10;
+
+     function inner() {
+       console.log(x); // Accessing x from the outer scope
+     }
+
+     return inner; // Returning the inner function
+   }
+
+   const closureFunction = outer();
+   closureFunction(); // Output: 10
+   ```
+
+   In this example, `inner` is returned from `outer`, and when `closureFunction` is invoked, it still has access to the variable `x` even though `outer` has finished executing. This is a closure.
+
+**Relationship:**
+- Lexical scope determines the availability of variables during the creation phase of the program.
+- Closure is a runtime behavior that occurs when a function retains access to variables from its lexical scope, even after that scope has finished execution.
+
+In summary, lexical scope is a concept related to how variable names are resolved, while closures are a runtime feature that allows functions to retain access to variables from their lexical scope. Closures essentially depend on lexical scope to function.
+
+
+
+
+
+ -->
